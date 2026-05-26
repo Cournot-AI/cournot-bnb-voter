@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cournot-bnb-voter"
+version = "0.1.0"
+description = "Autonomous Cournot Voter Agent for ERC-8183 dispute settlement"
+requires-python = ">=3.10"
+dependencies = [
+    "bnbagent>=0.3.0",
+    "requests>=2.28",
+    "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+erc8183-voter = "erc8183_voter.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["erc8183_voter*"]
+
+[tool.pytest.ini_options]
+testpaths = ["erc8183_voter/tests"]
